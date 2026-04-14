@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloPerfil}" stretch="{device>/isPhone}" busyIndicatorDelay = "0">
+		<content>		
+			<form:SimpleForm width="auto" editable="true" layout="ResponsiveGridLayout" emptySpanL="1" emptySpanM="0"
+					labelSpanL="4" labelSpanM="4" >
+				<form:content>
+					<core:Title text="Datos de perfil"/>
+					<Label text="{i18n>ContactoInternoPerfil}" required="true"/>
+					<Input value="{local>/sPerfil/ContactoInterno}" enabled="false" maxLength = "12" visible = "false" />
+					<Label text="{i18n>SociedadPerfil}" required="true"/>
+					<Input value="{local>/sPerfil/Sociedad}" enabled="false"/>
+					<Label text="{i18n>ClaseDocumentoPerfil}" required="true"/>
+					<Input value="{local>/sPerfil/ClasePedido}" id="idClDoc" description="{local>/sPerfil/DescClaseDoc}"  showValueHelp="true" enabled="true" valueHelpRequest=".onVHClDoc" />
+					<Label text="{i18n>TipoImputacionPerfil}" required="true"/> 
+					<Input value="{local>/sPerfil/TipoImputacion}" description="{local>/sPerfil/DescTipoImp}" id="tipoImputacion" showValueHelp="true" valueHelpRequest=".onPressVHTipo" enabled="true"/>
+					<Label text="{i18n>GrupoComprasPerfil}" required="true"/>
+					<Input value="{local>/sPerfil/GrupoCompras}" description="{local>/sPerfil/DescGrupoCompras}" id="idGrupoCompras" showValueHelp="true" valueHelpRequest=".onVHGrupoCompras" />
+					<Label text="{i18n>ResponsablePerfil}" required="true"/>
+					<Input value="{local>/sPerfil/Responsable}" description="{local>/sPerfil/DescResponsable}" enabled="false"/>
+					<Label text="{i18n>CecoPerfil}" required="true"/>
+					<Input value="{local>/sPerfil/CentroCoste}" description="{local>/sPerfil/DescCeco}" enabled="false"/>
+					<Label text="{i18n>TipoMaterialPerfil}" required="true"/>
+					<Input value="{local>/sPerfil/TipoMat}" description="{local>/sPerfil/TipoMat}" enabled="false"/>
+					<Label text="{i18n>GrupoArticuloPerfil}" required="true"/>
+					<Input value="{local>/sPerfil/GrupoArticulos}" description="{local>/sPerfil/DescGrupoArt}" enabled="false"/>
+					<Label text="{i18n>MatReqPerfil}"/>
+					<CheckBox selected="{local>/sPerfil/MatnrReq}" enabled="false"/>
+					
+						  
+				</form:content>
+			</form:SimpleForm>			
+		</content>
+		<buttons>
+			<Button text="{i18n>BotonCerrar}" press=".onPressCerrarPerfil"/>
+			<Button text="{i18n>BotonModificar}" press=".onPressGuardarPerfil" type="Emphasized" visible="false"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

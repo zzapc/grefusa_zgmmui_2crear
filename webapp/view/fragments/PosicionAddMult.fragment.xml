@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>DatosPosicion}" stretch="{device>/isPhone}"
+	afterClose = "onCerrarDialogo">
+		<content>		
+			<form:SimpleForm width="auto" editable="true" layout="ResponsiveGridLayout" emptySpanL="3" emptySpanM="3"
+					labelSpanL="4" labelSpanM="4">
+				<form:content>
+					<Label text="{i18n>PrecioPosicion}" required="true"/>
+					<Input valueStateText="{i18n>ErrorPrecio}" submit ="onComprobarCampoVacio" liveChange ="onItemLiveChange" id="precioMult" description="EUR" type="Number" />
+					<Label text="{i18n>CantidadPosicion}" required="true"/>
+					<HBox >
+						<Input valueStateText="{i18n>ErrorCantidad}" value="1" submit ="onComprobarCampoVacio" liveChange ="onItemLiveChange"  id="cantidadMult" description="UND" type="Number"/>
+						<ComboBox id="comboUnidad" selectedKey="CAJ" visible="false">
+							<items>
+							<core:Item xmlns:core="sap.ui.core" key="CAJ" 
+								text="Cajas"  id="itemCajas"/>
+							<core:Item xmlns:core="sap.ui.core" key="UND" 
+								text="Unidades" id="itemUnidades"/>
+							</items>
+						</ComboBox>
+					</HBox>
+					<Label text="{i18n>FechaPosicion}" required="true"/>
+					<DatePicker placeholder="{i18n>HolderFechaPedido}" displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" id="fechaMult" change ="onItemLiveChange" /> 
+				</form:content>
+			</form:SimpleForm>			
+		</content>
+		<buttons>
+			<Button text="{i18n>BotonCancelar}" press="onFinPosicionMultipleAdd"/>
+			<Button text="{i18n>BotonAnyadir}" press="onPressPosicionMultipleAdd" type="Emphasized" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition> 

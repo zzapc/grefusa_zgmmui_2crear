@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloProveedores}" stretch="{device>/isPhone}">
+		<customHeader>
+			<Toolbar>
+				<SegmentedButton selectedKey="kids" width="100%" select=".onSwitchProveedor">
+					<items>
+						<SegmentedButtonItem text="Por responsable" key="BUSAB" />
+						<SegmentedButtonItem text="Todos" key="ALL"/>				
+					</items>
+				</SegmentedButton>
+			</Toolbar>
+		</customHeader>
+		<subHeader>
+			<Toolbar>
+				<SearchField
+					id = "buscarProveedor"
+					liveChange = ".onBuscarProveedor"/>
+			</Toolbar>
+		</subHeader>
+		<content>	
+			<List 
+				id="listaProveedores"
+				    mode = "SingleSelectMaster"
+				    itemPress =".onPressProveedor"
+				    growing="true"
+				    busyIndicatorDelay="0"
+   					growingThreshold="15"
+				    selectionChange	=".onPressProveedor"
+					items ="{proveedores>/}">
+				<items>
+					<StandardListItem description="{proveedores>Nombre} {proveedores>Nombre2}" title="{proveedores>Codigo}" info="{proveedores>Stcd1}"/>
+					
+				</items>
+			</List>
+		</content>
+		<buttons>
+			<Button text="{i18n>BotonCerrar}" press=".onPressCerrarProveedor"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

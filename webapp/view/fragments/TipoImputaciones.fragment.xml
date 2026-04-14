@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloCeCo}" stretch="{device>/isPhone}">
+		<subHeader>
+			<Toolbar>
+				<SearchField
+					id = "buscarTipo"
+					liveChange = ".onBuscarTipo"
+					/> 
+			</Toolbar>
+		</subHeader>
+		<content>	
+			<List
+				id="listaTipo"
+			    mode = "SingleSelectMaster"
+			    itemPress =".onPressTipo"
+			    selectionChange	=".onPressTipo"
+				items = "{tipos>/}"
+				>
+				<items>
+					<StandardListItem title="{tipos>Tipo}" description="{tipos>Descripcion}"/>
+					
+				</items>
+			</List>
+		</content> 
+		<buttons>
+			<Button text="Cerrar" press=".onPressCerrarTipo"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

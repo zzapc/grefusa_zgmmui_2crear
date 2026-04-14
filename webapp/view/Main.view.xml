@@ -1,0 +1,108 @@
+<mvc:View controllerName="es.seidor.grefusa.pedidoscompraGrefusa-captacionpedidos2compra.controller.Main"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" busyIndicatorDelay = "0">
+	<App>
+		<pages>
+			<Page id="Page" title="{i18n>TituloPedido}" busyIndicatorDelay = "0">
+				<content>
+					<form:SimpleForm layout="ResponsiveGridLayout" 
+					labelSpanL="3" emptySpanL="3"
+					labelSpanM="3" emptySpanM="1" 
+					adjustLabelSpan="false"
+					columnsL="1" columnsM="1" editable="true"
+					>
+						<form:content>
+							<core:Title text="{i18n>CabeceraPedido}"/>
+							<Label text="{i18n>PerfilPedido}" required="true"/>
+							<Select items="{path: 'modeloDatos>/PerfilesSet'}"
+							 id="selectPerfil" change=".onChangePerfil">
+								<items>
+									<core:Item key="{modeloDatos>Codigo}" text="{modeloDatos>Codigo}: {modeloDatos>Text}"/>
+								</items>
+								<layoutData>
+									<l:GridData span="L5 M4 S10"/>
+								</layoutData>
+							</Select>
+							<Button icon="sap-icon://detail-view" press=".onPressPerfil">
+								<layoutData>
+									<l:GridData span="L1 M2 S2"/>
+								</layoutData>
+							</Button>
+							<Label id="LabelProveedor" text="{i18n>ProveedorPedido}" required="true"/>
+							<Input  valueStateText="{i18n>ErrorVacio}" value="" description="" id="idProveedor"
+							showValueHelp="true" valueHelpRequest=".onPressVHProveedor"  valueHelpOnly="true" liveChange="onLiveChangeProveedor">
+								<layoutData>
+									<l:GridData span="L4 M3 S10"/>
+								</layoutData>
+							</Input>
+	
+							<Button icon="sap-icon://request" text="{i18n>BotonTextoAmpliado}" press=".onPressTextoAmpliado">
+								<layoutData>
+									<l:GridData span="L2 M2 S2"/>
+								</layoutData>
+							</Button>
+							<Label text="{i18n>TextoClasificacionPedido}"/>
+							<Input  valueStateText="{i18n>ErrorVacio}" id="idTextoClasificacion" liveChange="onLiveChangeTexto" maxLength="30"/>
+							<Label text="{i18n>Solicitante}"/>
+							<Input  valueStateText="{i18n>ErrorVacio}" id="idSolicitante" maxLength="30" required="true"/>
+							<Label text="{i18n>Moneda}" visible="true" id="monedaLabel" required="true"/>
+							<Select id="monedaSelect" forceSelection="false" selectedKey="EUR" maxWidth="50%" change="onChangeCurrency">
+									<core:Item key="EUR" text="EUR"/>
+									<core:Item key="USD" text="USD" />
+							</Select>
+							<Label text="{i18n>Campanya}" visible="false" id="campanyaLabel" required="true"/>
+							<Input visible ="false"  valueHelpOnly="true" valueStateText="{i18n>ErrorVacio}" liveChange="onLiveChangeCampanya" id="seleccionCampanya" showValueHelp="true" valueHelpRequest=".onPressVHCampanya"/>
+						</form:content>
+					</form:SimpleForm>
+					<form:SimpleForm layout="ResponsiveGridLayout" 
+					labelSpanL="3" 
+					labelSpanM="3" 
+					adjustLabelSpan="false"
+					columnsL="1" columnsM="1" editable="true">
+						<form:content>
+							<core:Title text="{i18n>PosicionesPedido}"/>	
+<!-- 							<Toolbar> -->
+<!-- 								<Title text="{i18n>PosicionesPedido}"/> -->
+<!-- 								<ToolbarSpacer/> -->
+<!-- 								<Select id="monedaSelect" forceSelection="false" selectedKey="EUR" maxWidth="100%" change="onChangeCurrency"> -->
+<!-- 									<core:Item key="EUR" text="EUR"/> -->
+<!-- 									<core:Item key="USD" text="USD" /> -->
+<!-- 								</Select> -->
+<!-- 							</Toolbar> -->
+							<List 
+								items = "{posiciones>/}"
+								mode = "Delete"
+								delete = "onPressBorrar"	
+								id="posicionesList"							
+								>
+								<items >
+									<ObjectListItem type = "Detail"
+										title="{posiciones>CodigoMaterial} {posiciones>Descripcion}"
+										number="{path:'posiciones>Precio', type:'sap.ui.model.type.Float'}"
+										numberUnit="{local>/sMoneda}"
+										detailPress = "onPressEditar"
+										>
+										<firstStatus>
+											<ObjectStatus title="{i18n>CantidadPedido}" text="{path:'posiciones>Cantidad', type:'sap.ui.model.type.Float'} {posiciones>Unidad}" />
+										</firstStatus>
+										<attributes>
+											<!-- <ObjectAttribute title="Fecha" text="{path:'posiciones>Fecha',  type: 'sap.ui.model.type.DateTime', formatOptions:{pattern:'dd/MM/yyyy'}}" /> --> 
+											<ObjectAttribute title="{i18n>FechaPedido}" text="{path:'posiciones>Fecha', formatter:'.fechaPosicionFormato'}" />
+										</attributes>
+									</ObjectListItem>										
+								</items>
+							</List>
+						</form:content>
+					</form:SimpleForm>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="Añadir posición" press=".onPressMultiple"/>
+						<Button text="Finalizar pedido" type="Emphasized" press=".onPressFinalizar"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

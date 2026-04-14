@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>EditarPosicion}" stretch="{device>/isPhone}" busyIndicatorDelay = "0"
+	 afterOpen ="onAbrirDialogo">
+		<content>		
+			<form:SimpleForm width="auto" editable="true" layout="ResponsiveGridLayout" emptySpanL="3" emptySpanM="3"
+					labelSpanL="4" labelSpanM="4">
+				<form:content>
+					<core:Title text="{i18n>DatosPosicion}"/>
+					<Label text="{i18n>CodigoPosicion}"/>
+					<Input valueStateText="{i18n>ErrorVacio}" submit ="onComprobarCampoVacio" description="-" value="{local>/sPosicion/CodigoMaterial}" id="idMaterialEdit" showValueHelp="true" valueHelpRequest=".onVHMaterial"/>
+					<Label text="{i18n>TextoPosicion}"/>
+					<Input valueStateText="{i18n>ErrorVacio}" submit ="onComprobarCampoVacio" maxLength="40" id="nombreMaterialEdit" value="{local>/sPosicion/Descripcion}" liveChange ="onItemLiveChange"/>
+					<Label text="{i18n>GrupoArticuloPerfil}"/>
+					<Input value="{local>/sPosicion/GrupoArticulos}" valueHelpOnly="true" description="{local>/sPosicion/DescGrupoArt}" enabled="true" id="idGrupoArticuloMod" liveChange ="onItemLiveChange" submit ="onComprobarCampoVacio" showValueHelp="true" valueHelpRequest=".onVHGrupoArticulos"/>
+					<Label text="{i18n>PrecioPosicion}"/>
+					<Input submit ="onComprobarCampoVacio" valueStateText="{i18n>ErrorPrecio}"  value="{path:'local>/sPosicion/Precio'}" id="precioMod" type="Number" liveChange="onItemLiveChangeMod" description="{local>/sMoneda}"/>
+					<Label text="{i18n>CantidadPosicion}"/>					
+					<HBox >
+<!--						<Input submit ="onComprobarCampoVacio" valueStateText="{i18n>ErrorCantidad}" description="{path:'local>/sPosicion/Unidad'}" value="{path:'local>/sPosicion/Cantidad'}" id="cantidadMod" type="Number" liveChange="onItemLiveChangeMod"/> -->
+						<Input submit ="onComprobarCampoVacio" valueStateText="{i18n>ErrorCantidad}" value="{path:'local>/sPosicion/Cantidad'}" id="cantidadMod" type="Number" liveChange="onItemLiveChangeMod"/>						
+						<ComboBox id="comboUnidad" selectedKey="{local>/sPosicion/Unidad}" visible="true" enabled="false">
+							<items>
+							<core:Item xmlns:core="sap.ui.core" key="CAJ" 
+								text="Cajas"  id="itemCajas"/>
+							<core:Item xmlns:core="sap.ui.core" key="UND" 
+								text="Unidades" id="itemUnidades"/>
+							</items>
+						</ComboBox>
+					</HBox>
+					<Label text="{i18n>TipoImputacionPerfil}"/>
+					<Input value="{local>/sPosicion/TipoImputacion}" valueHelpOnly="true" id="tipoImputacionPos" description="{local>/sPosicion/DescTipoImputacion}" showValueHelp="true" valueHelpRequest=".onPressVHTipo" enabled="true"/>
+					<Label text="{i18n>FechaPosicion}"/>
+					<DatePicker change ="onItemLiveChange" placeholder="{i18n>HolderFechaPedido}" displayFormat="dd/MM/yyyy"  valueFormat="dd/MM/yyyy" value="{path:'local>/sPosicion/Fecha', formatter:'.fechaPosicionFormato'}" id="fechaMod"/>
+					<Label text="{i18n>CeCo}" />
+					<Input valueStateText="{i18n>ErrorVacio}" liveChange ="onItemLiveChangeMod" valueHelpOnly="true" enabled = "{path: 'local>/sPerfil/CeCoPos', formatter: '.ceCoFormatter'}" submit ="onComprobarCampoVacio" id="idCeCoMod" description="{local>/sPosicion/DescCentroCoste}" value="{local>/sPosicion/CentroCoste}" showValueHelp="true" valueHelpRequest=".onVHCeCo"/>
+					<Label text="{i18n>ActivoFijo}" visible = "{path: 'local>/sPosicion/TipoImputacion', formatter: '.activoFormatter'}" />
+					<Input valueStateText="{i18n>ErrorVacio}" visible = "{path: 'local>/sPosicion/TipoImputacion', formatter: '.activoFormatter'}" valueHelpOnly="true" submit ="onComprobarCampoVacio" id="idActivoMod" value="{local>/sPosicion/ActivoFijo}" showValueHelp="true" valueHelpRequest=".onVHActivo" description="{local>/sPosicion/DescActivoFijo}"/>
+				</form:content>
+			</form:SimpleForm>			
+		</content>
+		<buttons>
+			<Button text="{i18n>BotonCancelar}" press=".onPressCancelarPosicion"/>
+			<Button text="{i18n>BotonModificar}" press=".onPressAddPosicion" type="Emphasized" id="guardarMod"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

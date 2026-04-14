@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloClDoc}" stretch="{device>/isPhone}">
+		<subHeader>
+			<Toolbar>
+				<SearchField
+					id = "buscarClDoc"
+					liveChange = ".onBuscarClDoc"
+					/> 
+			</Toolbar>
+		</subHeader>
+		<content>	
+			<List
+				id="listaClDoc"
+			    mode = "SingleSelectMaster"
+			    itemPress =".onPressClDoc"
+			    selectionChange	=".onPressClDoc"
+				items = "{claseDocumento>/}"
+				>
+				<items>
+					<StandardListItem title="{claseDocumento>Codigo}" description="{claseDocumento>Descripcion}"/>		
+				</items>
+			</List>
+		</content> 
+		<buttons> 
+			<Button text="Cerrar" press=".onPressCerrarClDoc"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

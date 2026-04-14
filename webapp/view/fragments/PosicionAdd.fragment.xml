@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>AnyadirPosicion}" stretch="{device>/isPhone}" busyIndicatorDelay = "0"
+	afterClose = "onCerrarDialogo">
+		<content>		
+			<form:SimpleForm width="auto" editable="true" layout="ResponsiveGridLayout" emptySpanL="3" emptySpanM="3"
+					labelSpanL="4" labelSpanM="4">
+				<form:content>
+					<core:Title text="{i18n>DatosPosicion}"/>
+					<Label text="{i18n>CodigoPosicion}" />
+					<Input valueStateText="{i18n>ErrorVacio}" liveChange ="onItemLiveChange" submit ="onComprobarCampoVacio" id="idMaterial" description="-" value="" showValueHelp="true" valueHelpRequest=".onVHMaterial"/>
+					<Label text="{i18n>TextoPosicion}"/>
+					<Input valueStateText="{i18n>ErrorVacio}" liveChange ="onItemLiveChange" submit ="onComprobarCampoVacio" id="nombreMaterial" maxLength="40" value=""/>
+					<Label text="{i18n>GrupoArticuloPerfil}"/>
+					<Input description="" valueHelpOnly="true" enabled="true" id="idGrupoArticulo" liveChange ="onItemLiveChange" submit ="onComprobarCampoVacio" value="" showValueHelp="true" valueHelpRequest=".onVHGrupoArticulos"/>
+					<Label text="{i18n>PrecioPosicion}"/>
+					<Input valueStateText="{i18n>ErrorPrecio}" submit ="onComprobarCampoVacio" liveChange ="onItemLiveChange" id="precio"  type="Number" description="{local>/sMoneda}"/>
+					<Label text="{i18n>CantidadPosicion}"/>					
+					<Input valueStateText="{i18n>ErrorCantidad}" value="1" submit ="onComprobarCampoVacio" liveChange ="onItemLiveChange"  id="cantidad" description="UND" type="Number"/>
+					<Label id="LabeltipoImputacionPosAdd" text="{i18n>TipoImputacionPerfil}"/>
+					<Input value="" id="tipoImputacionPosAdd" showValueHelp="true"  valueHelpOnly="true" valueHelpRequest=".onPressVHTipo" enabled="true" liveChange ="onItemLiveChange"/>
+					<Label text="{i18n>FechaPosicion}"/>
+					<DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" id="fecha" change ="onItemLiveChange" /> 
+					<Label text="{i18n>CeCo}" />
+					<Input valueStateText="{i18n>ErrorVacio}"  valueHelpOnly="true" liveChange ="onItemLiveChange" enabled = "{path: 'local>/sPerfil/CecoMod', formatter: '.ceCoFormatter'}" submit ="onComprobarCampoVacio" id="idCeCo" value="" showValueHelp="true" valueHelpRequest=".onVHCeCo"/>
+					<Label text="{i18n>ActivoFijo}" visible = "{path: 'local>/sPerfil/TipoImputacion', formatter: '.activoFormatter'}"/>
+					<Input valueStateText="{i18n>ErrorVacio}"  valueHelpOnly="true" liveChange ="onItemLiveChange" visible = "{path: 'local>/sPerfil/TipoImputacion', formatter: '.activoFormatter'}" submit ="onComprobarCampoVacio" id="idActivo" value="" showValueHelp="true" valueHelpRequest=".onVHActivo"/>
+				</form:content>
+			</form:SimpleForm>			
+		</content>
+		<buttons>
+			<Button text="{i18n>BotonCancelar}" press="onPressCancelarPosicionAdd"/>
+			<Button text="{i18n>BotonAnyadir}" press="onPressAddPosicionAdd" type="Emphasized" id="guardarAdd"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition> 

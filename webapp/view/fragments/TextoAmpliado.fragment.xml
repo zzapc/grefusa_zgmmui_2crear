@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloTextoAmpliado}" stretch="{device>/isPhone}">
+		<content>	
+			<TextArea id = "textoAmpliado"
+				maxLength = "1000"
+				cols = "60"
+				>
+			</TextArea>
+		</content> 
+		<buttons> 
+			<Button text="{i18n>BotonTextoAmpliadoGuardar}" press=".onPressGuardarTextoAmpliado"/>
+			<Button text="{i18n>BotonTextoAmpliadoCerrar}" press=".onPressCerrarTextoAmpliado"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

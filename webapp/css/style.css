@@ -1,0 +1,5 @@
+.customCompact>span{
+	min-height: 0rem !important;
+	margin: 0px !important;
+	padding: 0px !important;
+}

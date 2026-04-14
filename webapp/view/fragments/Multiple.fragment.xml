@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>AnyadirPosicion}" busyIndicatorDelay="0" stretch="{device>/isPhone}"
+	afterClose = "onCerrarDialogo">
+		<content>		
+			<form:SimpleForm width="auto" editable="true" layout="ResponsiveGridLayout" emptySpanL="3" emptySpanM="3"
+					labelSpanL="4" labelSpanM="4">
+				<form:content>
+					<Label text="{i18n>CodigoPosicion}" required="{= ${local>/sPerfil/MatnrReq} === '' ? false : true}"/>
+					<Input valueStateText="{i18n>ErrorVacio}" liveChange ="onItemLiveChange" submit ="onComprobarCampoVacio" change ="onComprobarCampoVacio" id="idMaterialMult" description="-" value="" showValueHelp="true" valueHelpRequest=".onVHMaterial"/>
+					<Label text="{i18n>TextoPosicion}" required="true"/>
+					<Input valueStateText="{i18n>ErrorVacio}" liveChange ="onItemLiveChange" submit ="onComprobarCampoVacio" id="nombreMaterialMult" value="" maxLength="40"/>
+					<Label text="{i18n>GrupoArticuloPerfil}" required="true"/>
+					<Input description="" valueHelpOnly="true" enabled="true" id="idGrupoArticuloMult" liveChange ="onItemLiveChange" submit ="onComprobarCampoVacio" value="" showValueHelp="true" valueHelpRequest=".onVHGrupoArticulos"/>
+					<Label text="{i18n>TipoImputacionPerfil}" required="true"/>
+					<Input value="" id="tipoImputacionPosMult" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onPressVHTipo" enabled="true"/>
+					<Label text="{i18n>CeCo}" required="true"/>
+					<Input valueStateText="{i18n>ErrorVacio}" valueHelpOnly="true"  liveChange ="onItemLiveChange" enabled = "{path: 'local>/sPerfil/CecoMod', formatter: '.ceCoFormatter'}" submit ="onComprobarCampoVacio" id="idCeCoMult" value="" showValueHelp="true" valueHelpRequest=".onVHCeCo"/>
+					<Label text="{i18n>ActivoFijo}" required="true" />
+					<Input valueStateText="{i18n>ErrorVacio}" valueHelpOnly="true" visible = "false" submit ="onComprobarCampoVacio" id="idActivoMult" value="" showValueHelp="true" valueHelpRequest=".onVHActivo" description=""/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm layout="ResponsiveGridLayout" 
+					labelSpanL="3" 
+					labelSpanM="3" 
+					adjustLabelSpan="false"
+					columnsL="1" columnsM="1" editable="true">
+					<Toolbar>
+							<Title text="{i18n>PosicionesPedido}"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://add" press=".onPressMultipleNewPos"/>
+					</Toolbar>
+						<form:content>
+							<List 
+								items = "{multiple>/}"
+								mode = "Delete"
+								delete = "onPressBorrarMult"
+								id="multipleList"							
+								>
+								<items >
+									<ObjectListItem 
+										title="{path:'multiple>Fecha', formatter:'.fechaPosicionFormato'}"
+										number="{path:'multiple>Precio', type:'sap.ui.model.type.Float'}"
+										numberUnit="{local>/sMoneda}">	
+									<attributes>
+											<ObjectAttribute class="customCompact" title="Cantidad" text="{multiple>Cantidad} {multiple>UnidadBase}"/>
+									</attributes>
+									</ObjectListItem>
+								</items>
+							</List>
+						</form:content>
+					</form:SimpleForm>		
+		</content>
+		<buttons>
+			<Button text="{i18n>BotonCancelar}" press="onPressCancelarMultiple"/>
+			<Button text="{i18n>BotonAnyadir}" press="onPressAddMultiple" type="Emphasized" id="guardarMultiple"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition> 

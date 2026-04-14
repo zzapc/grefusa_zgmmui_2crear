@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloMaterial}" stretch="{device>/isPhone}">
+		<subHeader>
+			<Toolbar>
+				<SearchField
+					id = "buscarMaterial"
+					liveChange = ".onBuscarMaterial"
+					/>
+			</Toolbar>
+		</subHeader>
+		<content>	
+			<List
+				id="listaMateriales"
+			    mode = "SingleSelectMaster"
+			    itemPress =".onPressMaterial"
+			    selectionChange	=".onPressMaterial"
+				items = "{productos>/}"
+				>
+				<items> 
+					<StandardListItem description="{productos>Descripcion}" title="{productos>Codigo}"/>
+					
+				</items>
+			</List>
+		</content>  
+		<buttons>
+			<Button text="Cerrar" press=".onPressCerrarMaterial"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

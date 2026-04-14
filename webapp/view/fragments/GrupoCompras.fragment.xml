@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloGrupoCompras}" stretch="{device>/isPhone}">
+		<subHeader>
+			<Toolbar>
+				<SearchField
+					id = "buscarGrupoCompras"
+					liveChange = ".onBuscarGrupoCompras"
+					/> 
+			</Toolbar>
+		</subHeader>
+		<content>	
+			<List
+				id="listaGrupoCompras"
+			    mode = "SingleSelectMaster"
+			    itemPress =".onPressGrupoCompras"
+			    selectionChange	=".onPressGrupoCompras"
+				items = "{grupoCompras>/}"
+				>
+				<items>
+					<StandardListItem title="{grupoCompras>Codigo}" description="{grupoCompras>Descripcion}"/>		
+				</items>
+			</List>
+		</content> 
+		<buttons> 
+			<Button text="Cerrar" press=".onPressCerrarGrupoCompras"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

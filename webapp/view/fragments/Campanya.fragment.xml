@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloCampanya}" stretch="{device>/isPhone}">
+		<customHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Text text="{i18n>TituloCampanya}"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<subHeader>
+			<Toolbar>
+				<SearchField
+					id = "buscarCampanya"
+					liveChange = ".onBuscarCampanya"/>
+			</Toolbar>
+		</subHeader>
+		<content>	
+			<List 
+					id="listaCampanyas"
+				    mode = "SingleSelectMaster"
+				    itemPress =".onPressCampanya"
+				    selectionChange	=".onPressCampanya"
+					items ="{campanyas>/}">
+				<items>
+					<StandardListItem description="{campanyas>Descripcion}" title="{campanyas>Codigo}"/>
+					
+				</items>
+			</List>
+		</content>
+		<buttons>
+			<Button text="{i18n>BotonCerrar}" press=".onPressCerrarCampanyas"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

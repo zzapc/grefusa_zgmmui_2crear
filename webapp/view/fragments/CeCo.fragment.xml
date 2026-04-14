@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloCeCo}" stretch="{device>/isPhone}">
+		<subHeader>
+			<Toolbar>
+				<SearchField
+					id = "buscarCeCo"
+					liveChange = ".onBuscarCeCo"
+					/> 
+			</Toolbar>
+		</subHeader>
+		<content>	
+			<List
+				id="listaCeCos"
+			    mode = "SingleSelectMaster"
+			    itemPress =".onPressCeCo"
+			    selectionChange	=".onPressCeCo"
+				items = "{ceCos>/}"
+				>
+				<items>
+					<StandardListItem description="{ceCos>Descripcion}" title="{ceCos>Kostl}"/>
+					
+				</items>
+			</List>
+		</content> 
+		<buttons>
+			<Button text="Cerrar" press=".onPressCerrarCeCo"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

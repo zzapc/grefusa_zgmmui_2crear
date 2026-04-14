@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+xmlns:form="sap.ui.layout.form">
+	<Dialog showHeader="true" title="{i18n>TituloActivos}" stretch="{device>/isPhone}">
+		<subHeader>
+			<Toolbar>
+				<SearchField
+					id = "buscarActivos"
+					liveChange = ".onBuscarActivos"
+					/> 
+			</Toolbar>
+		</subHeader>
+		<content>	
+			<List
+				id="listaActivos"
+			    mode = "SingleSelectMaster"
+			    itemPress =".onPressActivos"
+			    selectionChange	=".onPressActivos"
+				items = "{activos>/}">
+				<items>
+					<StandardListItem description="{activos>Descripcion}" title="{activos>Codigo}"/>
+					
+				</items>
+			</List>
+		</content> 
+		<buttons>
+			<Button text="Cerrar" press=".onPressCerrarActivo"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
