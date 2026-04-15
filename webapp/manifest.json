@@ -1,106 +1,107 @@
 {
-    "_version": "1.5.0",
-    "sap.app": {
-        "id": "es.seidor.grefusa.pedidoscompraGrefusa-captacionpedidos2compra",
-        "type": "application",
-        "i18n": "i18n/i18n.properties",
-        "applicationVersion": {
-            "version": "1.0.0"
-        },
-        "title": "{{appTitle}}",
-        "description": "{{appDescription}}",
-        "sourceTemplate": {
-            "id": "ui5template.basicSAPUI5ApplicationProject",
-            "version": "1.40.12",
-            "toolsId": "fecb8130-adac-44e0-aa86-f40ac3c5b06b"
-        },
-        "dataSources": {
-            "modeloDatos": {
-                "uri": "/sap/opu/odata/SAP/ZGMMUI_CAPTACION_PEDIDOS_SRV/",
-                "type": "OData",
-                "settings": {
-                    "annotations": [],
-                    "localUri": "localService/metadata.xml",
-                    "odataVersion": "2.0"
-                }
-            }
+  "_version": "1.5.0",
+  "sap.app": {
+    "id": "es.seidor.grefusa.pedidoscompraGrefusa-captacionpedidos2compra",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "Captación de pedidos",
+    "description": "Captación de pedidos de compra",
+    "sourceTemplate": {
+      "id": "ui5template.basicSAPUI5ApplicationProject",
+      "version": "1.40.12",
+      "toolsId": "fecb8130-adac-44e0-aa86-f40ac3c5b06b"
+    },
+    "dataSources": {
+      "modeloDatos": {
+        "uri": "/sap/opu/odata/SAP/ZGMMUI_CAPTACION_PEDIDOS_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/modeloDatos/metadata.xml",
+          "odataVersion": "2.0"
         }
-    },
-    "sap.ui": {
-        "technology": "UI5",
-        "icons": {
-            "icon": "",
-            "favIcon": "",
-            "phone": "",
-            "phone@2": "",
-            "tablet": "",
-            "tablet@2": ""
-        },
-        "deviceTypes": {
-            "desktop": true,
-            "tablet": true,
-            "phone": true
-        },
-        "supportedThemes": [
-            "sap_hcb",
-            "grefusa_bluecrystal",
-            "sap_belize"
-        ]
-    },
-    "sap.ui5": {
-        "rootView": {
-            "viewName": "es.seidor.grefusa.pedidoscompraGrefusa-captacionpedidos2compra.view.Main",
-            "type": "XML"
-        },
-        "dependencies": {
-            "minUI5Version": "1.30.0",
-            "libs": {
-                "sap.ui.core": {},
-                "sap.m": {},
-                "sap.ui.layout": {},
-                "sap.ushell": {},
-                "sap.collaboration": {},
-                "sap.ui.comp": {},
-                "sap.uxap": {}
-            }
-        },
-        "contentDensities": {
-            "compact": true,
-            "cozy": true
-        },
-        "models": {
-            "i18n": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "settings": {
-                    "bundleName": "es.seidor.grefusa.pedidoscompraGrefusa-captacionpedidos2compra.i18n.i18n"
-                }
-            },
-            "local": {
-                "type": "sap.ui.model.json.JSONModel"
-            },
-            "modeloDatos": {
-                "dataSource": "modeloDatos",
-                "settings": {
-                    "refreshAfterChange": "true",
-                    "settings": {
-                        "useBatch": false
-                    },
-                    "metadataUrlParams": {
-                        "sap-documentation": "heading, quickinfo"
-                    }
-                }
-            }
-        },
-        "resources": {
-            "css": [
-                {
-                    "uri": "css/style.css"
-                }
-            ]
-        }
-    },
-    "sap.platform.hcp": {
-        "uri": "webapp",
-        "_version": "1.1.0"
+      }
     }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_hcb",
+      "grefusa_bluecrystal",
+      "sap_belize"
+    ]
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "es.seidor.grefusa.pedidoscompraGrefusa-captacionpedidos2compra.view.Main",
+      "type": "XML"
+    },
+    "dependencies": {
+      "minUI5Version": "1.30.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.ushell": {},
+        "sap.collaboration": {},
+        "sap.ui.comp": {},
+        "sap.uxap": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "es.seidor.grefusa.pedidoscompraGrefusa-captacionpedidos2compra.i18n.i18n"
+        }
+      },
+      "local": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "modeloDatos": {
+        "dataSource": "modeloDatos",
+        "settings": {
+          "refreshAfterChange": "true",
+          "settings": {
+            "useBatch": false
+          },
+          "metadataUrlParams": {
+            "sap-documentation": "heading, quickinfo"
+          }
+        },
+        "preload": true
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    }
+  },
+  "sap.platform.hcp": {
+    "uri": "webapp",
+    "_version": "1.1.0"
+  }
 }

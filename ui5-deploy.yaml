@@ -22,6 +22,6 @@ builder:
           name: ZGMMUI_2CREAR
           description: Aplicación para la captación de pedidos de gastos/inversión/ventas
           package: ZGUI5
-          transport: 
+          transport: GGDK900601
         exclude:
           - /test/

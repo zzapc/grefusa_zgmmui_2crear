@@ -8,16 +8,28 @@ xmlns:form="sap.ui.layout.form">
 					<core:Title text="Datos de perfil"/>
 					<Label text="{i18n>ContactoInternoPerfil}" required="true"/>
 					<Input value="{local>/sPerfil/ContactoInterno}" enabled="false" maxLength = "12" visible = "false" />
-					<Label text="{i18n>SociedadPerfil}" required="true"/>
-					<Input value="{local>/sPerfil/Sociedad}" enabled="false"/>
-					<Label text="{i18n>ClaseDocumentoPerfil}" required="true"/>
-					<Input value="{local>/sPerfil/ClasePedido}" id="idClDoc" description="{local>/sPerfil/DescClaseDoc}"  showValueHelp="true" enabled="true" valueHelpRequest=".onVHClDoc" />
-					<Label text="{i18n>TipoImputacionPerfil}" required="true"/> 
-					<Input value="{local>/sPerfil/TipoImputacion}" description="{local>/sPerfil/DescTipoImp}" id="tipoImputacion" showValueHelp="true" valueHelpRequest=".onPressVHTipo" enabled="true"/>
-					<Label text="{i18n>GrupoComprasPerfil}" required="true"/>
-					<Input value="{local>/sPerfil/GrupoCompras}" description="{local>/sPerfil/DescGrupoCompras}" id="idGrupoCompras" showValueHelp="true" valueHelpRequest=".onVHGrupoCompras" />
-					<Label text="{i18n>ResponsablePerfil}" required="true"/>
-					<Input value="{local>/sPerfil/Responsable}" description="{local>/sPerfil/DescResponsable}" enabled="false"/>
+					<Label text="{i18n>SociedadPerfil}" required="true" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/Sociedad}" enabled="false" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="{i18n>ClaseDocumentoPerfil}" required="true" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/ClasePedido}" id="idClDoc" description="{local>/sPerfil/DescClaseDoc}"  showValueHelp="true" enabled="true" valueHelpRequest=".onVHClDoc" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="{i18n>TipoImputacionPerfil}" required="true" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/> 
+					<Input value="{local>/sPerfil/TipoImputacion}" description="{local>/sPerfil/DescTipoImp}" id="tipoImputacion" showValueHelp="true" valueHelpRequest=".onPressVHTipo" enabled="true" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="{i18n>GrupoComprasPerfil}" required="true" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/GrupoCompras}" description="{local>/sPerfil/DescGrupoCompras}" id="idGrupoCompras" showValueHelp="true" valueHelpRequest=".onVHGrupoCompras" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="Clase Pedido Ventas" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/ClasePedidoVentas}" enabled="false" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="Cliente" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/Cliente}" enabled="false" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="Nombre Cliente" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/NombreCliente}" enabled="false" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="Organización Ventas" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/OrganizacionVentas}" enabled="false" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="Canal" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/Canal}" enabled="false" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="Sector" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/Sector}" enabled="false" visible="{= !!${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Label text="{i18n>ResponsablePerfil}" required="true" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
+					<Input value="{local>/sPerfil/Responsable}" description="{local>/sPerfil/DescResponsable}" enabled="false" visible="{= !${local>/sPerfil/ClasePedidoVentas} }"/>
 					<Label text="{i18n>CecoPerfil}" required="true"/>
 					<Input value="{local>/sPerfil/CentroCoste}" description="{local>/sPerfil/DescCeco}" enabled="false"/>
 					<Label text="{i18n>TipoMaterialPerfil}" required="true"/>
@@ -25,7 +37,7 @@ xmlns:form="sap.ui.layout.form">
 					<Label text="{i18n>GrupoArticuloPerfil}" required="true"/>
 					<Input value="{local>/sPerfil/GrupoArticulos}" description="{local>/sPerfil/DescGrupoArt}" enabled="false"/>
 					<Label text="{i18n>MatReqPerfil}"/>
-					<CheckBox selected="{local>/sPerfil/MatnrReq}" enabled="false"/>
+					<CheckBox selected="{= ${local>/sPerfil/MatnrReq} === 'X' }" enabled="false"/>
 					
 						  
 				</form:content>

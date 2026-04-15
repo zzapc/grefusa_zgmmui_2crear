@@ -118,6 +118,13 @@ sap.ui.define([
 					this.getView().byId("campanyaLabel").setVisible(false);
 					this.getView().byId("seleccionCampanya").setValueState("None");
 				}
+
+				if (oPerfil.TextoObligatorio === "X" || oPerfil.TextoObligatorio === true) {
+					this.getView().byId("idTextoClasificacion").setRequired(true);
+				} else {
+					this.getView().byId("idTextoClasificacion").setRequired(false);
+				}
+
 				this.getView().getModel("local").setProperty("/sPerfil", oPerfil);
 				this.getView().getModel("local").setProperty("/sCeCo", oPerfil.CentroCoste);
 				//      MTEN A�adir texto Ampliado.			
@@ -1656,6 +1663,14 @@ sap.ui.define([
 				oView.byId("seleccionCampanya").getValue() == "" ? oView.byId("seleccionCampanya").setValueState("Error") : oView.byId("seleccionCampanya").setValueState("None");
 				return;
 			}
+
+			if (oView.byId("idTextoClasificacion").getRequired() && oView.byId("idTextoClasificacion").getValue() === "") {
+				this._showToast("Texto obligatorio para el perfil seleccionado");
+				oView.byId("idTextoClasificacion").setValueState("Error");
+				return;
+			} else {
+				oView.byId("idTextoClasificacion").setValueState("None");
+			}
 			//			if(oView.byId("idProveedor").getValue() =="" || oView.byId("idTextoClasificacion").getValue()=="" || !this.comprobarCampanya()){
 			//				this._showToast(this._getText("CamposVacios"));
 			//				oView.byId("idProveedor").getValue() =="" ? oView.byId("idProveedor").setValueState("Error") : oView.byId("idProveedor").setValueState("None");
@@ -2001,6 +2016,13 @@ sap.ui.define([
 								}
 
 							}
+
+							if (oData.results[item].TextoObligatorio === "X" || oData.results[item].TextoObligatorio === true) {
+								this.getView().byId("idTextoClasificacion").setRequired(true);
+							} else {
+								this.getView().byId("idTextoClasificacion").setRequired(false);
+							}
+
 							this._PerfilActivo = oData.results[item];
 							this.ModificarPantalla();
 						}
