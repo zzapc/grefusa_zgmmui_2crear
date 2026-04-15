@@ -75,6 +75,11 @@ sap.ui.define([
 			this.getView().getModel("local").setProperty("/sMoneda", this._currency.getSelectedKey());
 		},
 
+		// 2026-04-15 - Formatter para el label dinámico del campo TextoClasificacion
+		formatTextoClasificacion: function (sTexto) {
+			return sTexto || "Texto Clasificación";
+		},
+
 		/**
 		 * @desc Creates the dialog with the information of the selected profile and open it.
 		 * 
@@ -127,6 +132,8 @@ sap.ui.define([
 
 				this.getView().getModel("local").setProperty("/sPerfil", oPerfil);
 				this.getView().getModel("local").setProperty("/sCeCo", oPerfil.CentroCoste);
+				// 2026-04-15 - Actualizar TextoDescripcion del perfil seleccionado para el label dinámico
+				this.getView().getModel("local").setProperty("/sTextoDescripcion", oPerfil.TextoDescripcion || "");
 				//      MTEN A�adir texto Ampliado.			
 				var sTexto = sap.ui.getCore().byId("textoAmpliado");
 				this.getView().getModel("local").setProperty("/sTextoAmpliado", sTexto);
@@ -1990,7 +1997,7 @@ sap.ui.define([
 
 		obtenerDatosPerfiles: function () {
 
-			this.getView().getModel("modeloDatos").setUseBatch(false);
+//			this.getView().getModel("modeloDatos").setUseBatch(false);
 			var oView = this.getView();
 			oView.setBusy(true);
 			var oController = this;
@@ -2005,6 +2012,10 @@ sap.ui.define([
 							this.getView().byId("selectPerfil").setSelectedKey(oData.results[item].Codigo);
 							this.getView().getModel("local").setProperty("/sPerfil", oData.results[item]);
 							this.getView().getModel("local").setProperty("/sCeCo", oData.results[item].CentroCoste);
+
+							// 2026-04-15 - Actualizar TextoDescripcion del perfil por defecto al cargar la página
+							this.getView().getModel("local").setProperty("/sTextoDescripcion", oData.results[item].TextoDescripcion || "");
+
 							if (oData.results[item].CampOblig !== "") {
 								this.getView().byId("seleccionCampanya").setVisible(true);
 								this.getView().byId("campanyaLabel").setVisible(true);
@@ -2032,6 +2043,8 @@ sap.ui.define([
 
 				}.bind(this),
 				error: jQuery.proxy(function (e) {
+					console.log("Error al obtener los perfiles");
+					console.log(e);
 					oView.setBusy(false);
 					oController._SAPError(e);
 				}, this)

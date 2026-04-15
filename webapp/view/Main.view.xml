@@ -41,7 +41,9 @@
 									<l:GridData span="L2 M2 S2"/>
 								</layoutData>
 							</Button>
-							<Label text="{i18n>TextoClasificacionPedido}"/>
+							<!-- 2026-04-15 - Label dinámico: muestra TextoDescripcion del perfil seleccionado o "Texto Clasificación" por defecto -->
+						<!-- <Label text="{i18n>TextoClasificacionPedido}"/> -->
+						<Label text="{path: 'local>/sTextoDescripcion', formatter: '.formatTextoClasificacion'}"/>
 							<Input  valueStateText="{i18n>ErrorVacio}" id="idTextoClasificacion" liveChange="onLiveChangeTexto" maxLength="30"/>
 							<Label text="{i18n>Solicitante}"/>
 							<Input  valueStateText="{i18n>ErrorVacio}" id="idSolicitante" maxLength="30" required="true"/>

@@ -2,6 +2,7 @@
 
 ## Proyecto
 Este repositorio es una aplicación SAPUI5 / Fiori construida con UI5 Tooling y SAP Fiori tools.
+La aplicación está pensada para ejecutarse dentro de SAP Fiori Launchpad, por lo que las rutas y bindings deben ser compatibles con ese entorno.
 
 ## Estructura clave
 - `webapp/Component.js` — componente principal de la app.

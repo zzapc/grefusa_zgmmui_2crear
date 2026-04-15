@@ -23,8 +23,9 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");			
-			
-			this.getModel("local").loadData("model/local.json", undefined, false);
+			// 2026-04-15 - Eliminado loadData con ruta relativa (rompe en FLP). La carga de local.json
+			// se gestiona ahora desde manifest.json para que UI5 resuelva la URI contra el componente
+			// this.getModel("local").loadData("model/local.json", undefined, false);
 		},
 		getContentDensityClass : function() {
 			if (!this._sContentDensityClass) {

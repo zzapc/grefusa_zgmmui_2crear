@@ -210,6 +210,7 @@
                 <Property Name="Canal" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Canal distrib." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Sector" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Sector" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="TextoObligatorio" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Texto Obligatorio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TextoDescripcion" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Texto Descripcion" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="Proveedores" sap:content-version="1">
                 <Key>

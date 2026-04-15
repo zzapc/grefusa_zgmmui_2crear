@@ -7,8 +7,8 @@
     "applicationVersion": {
       "version": "1.0.0"
     },
-    "title": "Captación de pedidos",
-    "description": "Captación de pedidos de compra",
+    "title": "Captación de pedidos de venta",
+    "description": "Captación de pedidos de venta",
     "sourceTemplate": {
       "id": "ui5template.basicSAPUI5ApplicationProject",
       "version": "1.40.12",
@@ -76,7 +76,8 @@
         }
       },
       "local": {
-        "type": "sap.ui.model.json.JSONModel"
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/local.json"
       },
       "modeloDatos": {
         "dataSource": "modeloDatos",
